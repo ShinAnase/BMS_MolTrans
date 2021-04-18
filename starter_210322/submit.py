@@ -31,7 +31,13 @@ def inference(test_loader, encoder, decoder, tokenizer, device):
 
 
 # -------------------------submit実行---------------------------------------------
+with open(setting.OUTPUT + '/Log/train.log') as f:
+    s = f.read()
+print(s)
+
 tokenizer = torch.load(setting.OUTPUT + '/tokenizer/tokenizer2_pycharm.pth')
+print(f"tokenizer.stoi: {tokenizer.stoi}")
+
 states = torch.load(f'{setting.OUTPUT}/model/{setting.model_name}_fold0_best.pth',
                     map_location=torch.device('cpu'))
 
